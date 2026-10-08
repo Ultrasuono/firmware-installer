@@ -1,4 +1,4 @@
-[![OPEN FIRMWARE INSTALLER](assets/open-installer.svg)](https://ultrasuono.github.io/firmware-installer/)
+[![OPEN FIRMWARE INSTALLER](docs/assets/open-installer.svg)](https://ultrasuono.github.io/firmware-installer/)
 
 # Ultrasuono Firmware Installer
 
@@ -12,4 +12,4 @@ Choose LIVE MODE or DEV MODE and install it on your Ultrasuono directly from you
 
 Do not disconnect the cable during installation. After this update, update mode has no timeout. To exit without installing, turn Ultrasuono off and on, or press RESET on the Daisy Seed.
 
-The installer includes troubleshooting and first-installation instructions. Application sources remain private; [firmware terms](FIRMWARE-TERMS.txt), third-party licenses and relinking packages are included.
+The installer includes troubleshooting and first-installation instructions. Application sources remain private; [firmware terms](docs/FIRMWARE-TERMS.txt), third-party licenses and relinking packages are included.
