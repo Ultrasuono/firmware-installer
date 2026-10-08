@@ -11,9 +11,9 @@ function updateButtons() {
   const key = selected();
   byId('back').setAttribute('aria-disabled', String(busy || !!waitKey));
   const action = byId('primary');
-  action.textContent = busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : authorizedUsb ? `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}` : 'Authorize Daisyseed';
-  action.disabled = busy || !navigator.usb || !catalog || (!!authorizedUsb && !binaries[key]);
-  action.classList.toggle('ready', !!authorizedUsb);
+  action.textContent = busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
+  action.disabled = busy || !navigator.usb || !catalog || !binaries[key];
+  action.classList.add('ready');
   byId('boot').disabled = busy || !!waitKey || !authorizedUsb || !binaries.boot || !byId('boot-confirm').checked;
   document.querySelectorAll('input[name="variant"]').forEach(input => { input.disabled = busy || !!waitKey; });
   byId('boot-confirm').disabled = busy || !!waitKey;
@@ -32,20 +32,22 @@ async function selectVariant() {
   updateButtons();
   try {
     await loadBinary(key);
-    if (revision === loadId && !device) status(authorizedUsb ? 'Firmware ready. Click Install, then hold the encoder for 5 seconds.' : 'Firmware ready. Authorize the Daisy using the button above.');
+    if (revision === loadId && !device) status('Firmware ready. Click Install, then hold the encoder for 5 seconds. If asked, select the Daisy in the USB dialog; installation starts automatically.');
   } catch (error) { status(error.message); }
   updateButtons();
 }
 async function connect() {
   if (busy) return;
+  const key = selected();
   busy = true; updateButtons();
   try {
     status('With the USB dialog open, hold the encoder for 5 seconds and select the Daisy when it appears.');
     authorizedUsb = await navigator.usb.requestDevice({filters:[{vendorId:0x0483, productId:0xdf11}]});
-    status('Daisy authorized. Click Install, then hold the encoder for 5 seconds: the site will detect it automatically.');
   } catch (error) {
-    status(error.name === 'NotFoundError' ? 'Authorization cancelled. Open the USB dialog again and repeat the encoder press.' : `Authorization failed: ${error.message || error}. On Windows, check the DFU WinUSB driver.`);
+    status(error.name === 'NotFoundError' ? 'Authorization cancelled. Click Install to try again.' : `Authorization failed: ${error.message || error}. On Windows, check the DFU WinUSB driver.`);
+    return;
   } finally { busy = false; updateButtons(); }
+  waitAndInstall(key);
 }
 async function openDevice(usb, key) {
   let candidate;

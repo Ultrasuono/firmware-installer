@@ -7,8 +7,7 @@ Choose LIVE MODE or DEV MODE and install it on your Ultrasuono directly from you
 ## Install
 
 1. Open the installer in **Chrome or Edge on a computer**. Connect Ultrasuono with a USB-C data cable and turn down the audio volume.
-2. Choose a mode and click **Authorize Daisyseed**. Hold the encoder for **5 seconds**, then select the DFU device in the browser dialog.
-3. Click **Install**. If needed, hold the encoder for 5 seconds again. The transfer starts automatically when the device appears.
+2. Choose a mode and click **Install**. Hold the encoder for **5 seconds** and, if asked, select the Daisyseed DFU device in the browser dialog. Installation starts automatically after authorization; no second click is needed.
 
 Do not disconnect the cable during installation. After this update, update mode has no timeout. To exit without installing, turn Ultrasuono off and on, or press RESET on the Daisy Seed.
 
