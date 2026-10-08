@@ -12,9 +12,10 @@ function updateButtons() {
   const key = selected();
   byId('back').setAttribute('aria-disabled', String(busy || !!waitKey));
   const action = byId('primary');
-  action.textContent = uploadedMode === key ? 'mode uploaded successfully' : busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
+  action.textContent = uploadedMode === key ? 'Mode uploaded successfully' : busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
   action.disabled = uploadedMode === key || busy || !navigator.usb || !catalog || !binaries[key];
   action.classList.add('ready');
+  action.classList.toggle('uploaded', uploadedMode === key);
   byId('boot').disabled = busy || !!waitKey || !authorizedUsb || !binaries.boot || !byId('boot-confirm').checked;
   document.querySelectorAll('input[name="variant"]').forEach(input => { input.disabled = busy || !!waitKey; });
   byId('boot-confirm').disabled = busy || !!waitKey;
@@ -83,7 +84,7 @@ async function openDevice(usb, key) {
     candidate.logInfo = message => { if (message.includes('Erasing')) status('Preparing memory…'); else if (message.includes('Copying')) status('Installing. Do not disconnect the cable.'); };
     candidate.logWarning = () => {};
     candidate.logError = () => {};
-    candidate.logProgress = (done,total) => { byId('progress').value = total ? done / total * 100 : 0; };
+    candidate.logProgress = () => {};
     return candidate;
   } catch (error) {
     if (candidate) await candidate.close().catch(() => {});
@@ -143,7 +144,6 @@ async function install(key) {
   if (busy || !device || !binaries[key] || (key === 'boot' && !byId('boot-confirm').checked)) return;
   busy = true; updateButtons();
   const activeDevice = device;
-  byId('progress').value = 0;
   try {
     activeDevice.startAddress = FlashCore.validate(activeDevice.memoryInfo, key, binaries[key].byteLength);
     await FlashCore.checkBinary(binaries[key], catalog[key]);
@@ -152,7 +152,6 @@ async function install(key) {
     await activeDevice.abortToIdle();
     await activeDevice.do_download(transferSize, binaries[key], false);
     if (key !== 'boot') uploadedMode = key;
-    byId('progress').value = 100;
     status(key === 'boot' ? 'Bootloader transferred. Press RESET, reconnect the Daisy and install the firmware.' : 'Transfer complete. If the device does not restart, press RESET. Check that it works before use.');
   } catch (error) { status(`Installation not confirmed: ${error.message || error}. Click Install and hold the encoder for 5 seconds again.`); }
   finally {

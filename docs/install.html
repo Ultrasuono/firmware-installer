@@ -4,9 +4,9 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Ultrasuono · Firmware</title>
   <meta name="description" content="Explore and install the latest LIVE MODE and DEV MODE firmware for Ultrasuono with Daisy Seed.">
-  <link rel="icon" href="assets/favicon-ultrasuono.png" type="image/png"><link rel="stylesheet" href="style.css?v=two-steps-1">
+  <link rel="icon" href="assets/favicon-ultrasuono.png" type="image/png"><link rel="stylesheet" href="style.css?v=uploaded-2">
   <script src="vendor/dfu.js" defer></script><script src="vendor/dfuse.js" defer></script>
-  <script src="flash-core.js?v=english-1" defer></script><script src="installer.js?v=uploaded-1" defer></script>
+  <script src="flash-core.js?v=english-1" defer></script><script src="installer.js?v=uploaded-2" defer></script>
 </head>
 <body class="install-page">
 <header><a class="brand" href="index.html" aria-label="Ultrasuono firmware home"><img src="assets/ultra-mark.svg" alt="Ultra"></a><a class="button website" href="https://www.ultrasuono.org/">website <img src="assets/arrow.svg" alt=""></a></header>
@@ -20,7 +20,7 @@
     <li class="step"><span class="step-number" aria-hidden="true">Step 2</span><p>Click “Install mode”, then hold the encoder for 5 seconds. If asked, select the Daisyseed DFU device in the USB dialog. Installation starts automatically: no further clicks are needed.</p></li>
   </ol>
   <div class="install-panel"><button id="primary" type="button" disabled>Install LIVE mode</button>
-  <div class="transfer"><progress id="progress" max="100" value="0" aria-label="Installation progress"></progress><p id="status" role="status" aria-live="polite">Loading firmware…</p><a id="download" href="firmware/LIVE-MODE.bin" download>Download firmware .bin</a></div></div>
+  <div class="transfer"><p id="status" role="status" aria-live="polite">Loading firmware…</p><a id="download" href="firmware/LIVE-MODE.bin" download>Download firmware .bin</a></div></div>
   </section>
   <section class="faq" aria-label="Frequently asked questions">
     <details id="boot-help"><summary>First installation or bootloader not found?</summary><p>If the site detects only internal memory, install the Daisy bootloader before the firmware. This initial procedure requires access to the buttons on the board.</p><ol><li>On the Daisy Seed, hold BOOT, press and release RESET, then release BOOT.</li><li>Click “Install mode” and select the DFU device. If only internal memory is detected, the installer stops and opens these instructions.</li><li>Check the confirmation below and click “Install Daisy bootloader”. This replaces the contents of internal flash.</li><li>After the transfer, click “Install” for your selected firmware, then press RESET on the board. The site waits and starts the transfer automatically.</li></ol><label class="confirm"><input id="boot-confirm" type="checkbox"> I confirm that this is the Daisy Seed in Ultrasuono and I want to install the bootloader.</label><button id="boot" type="button" disabled>Install Daisy bootloader</button></details>
