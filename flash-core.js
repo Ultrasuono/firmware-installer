@@ -8,14 +8,14 @@ const FlashCore = {
   validate(memory, key, size) {
     const address = this.targets[key];
     if (!Number.isSafeInteger(size) || size < 8 || !address || !this.region(memory, address, size))
-      throw new Error('Firmware incompatibile con la memoria selezionata. Non è stato scritto nulla.');
+      throw new Error('Firmware is incompatible with the selected memory. Nothing was written.');
     return address;
   },
   async checkBinary(data, entry) {
-    if (data.byteLength !== entry.size) throw new Error('Dimensione firmware non valida. Ricarica la pagina.');
+    if (data.byteLength !== entry.size) throw new Error('Invalid firmware size. Reload the page.');
     const digest = await crypto.subtle.digest('SHA-256', data);
     const hash = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
-    if (hash !== entry.sha256) throw new Error('Verifica firmware fallita. Ricarica la pagina.');
+    if (hash !== entry.sha256) throw new Error('Firmware verification failed. Reload the page.');
   }
 };
 if (typeof module !== 'undefined') module.exports = FlashCore;
