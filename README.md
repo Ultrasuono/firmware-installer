@@ -2,9 +2,6 @@
 
 Questi firmware usano `System::ResetToBootloader(System::DAISY_INFINITE_TIMEOUT)` dopo una pressione encoder di 5 secondi. Prima del salto chiude un’eventuale registrazione. Il bootloader Daisy standard resta invariato. Per uscire senza installare, spegnere/riaccendere il dispositivo oppure premere RESET: il pulsante Annulla attesa ferma solo la pagina. La prima installazione dei nuovi binari usa ancora la finestra DFU del vecchio firmware.
 
-Sito statico per scegliere e installare i firmware LIVE MODE e DEV MODE su Ultrasuono con Daisy Seed, via WebUSB/DFU in Chrome o Edge su computer.
-
-L’identità visiva riprende [ultrasuono.org](https://www.ultrasuono.org/): logo ufficiale, arancione, grigio chiaro, titoli PP NeueBit e testi Funnel Display. Logo e caratteri sono copiati dalle risorse del sito ufficiale per questo installer Ultrasuono.
 
 ## Contenuto
 
