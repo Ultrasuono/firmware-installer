@@ -2,6 +2,7 @@
 const byId = id => document.getElementById(id);
 let catalog, device, transferSize = 1024, busy = false, loadId = 0;
 let authorizedUsb, waitKey, waitTimer, checking = false, waitGeneration = 0;
+let uploadedMode;
 const binaries = {};
 const requestedMode = new URLSearchParams(location.search).get('mode');
 document.querySelector(`input[value="${requestedMode === 'dev' ? 'dev' : 'live'}"]`).checked = true;
@@ -11,8 +12,8 @@ function updateButtons() {
   const key = selected();
   byId('back').setAttribute('aria-disabled', String(busy || !!waitKey));
   const action = byId('primary');
-  action.textContent = busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
-  action.disabled = busy || !navigator.usb || !catalog || !binaries[key];
+  action.textContent = uploadedMode === key ? 'mode uploaded successfully' : busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
+  action.disabled = uploadedMode === key || busy || !navigator.usb || !catalog || !binaries[key];
   action.classList.add('ready');
   byId('boot').disabled = busy || !!waitKey || !authorizedUsb || !binaries.boot || !byId('boot-confirm').checked;
   document.querySelectorAll('input[name="variant"]').forEach(input => { input.disabled = busy || !!waitKey; });
@@ -150,6 +151,7 @@ async function install(key) {
     if (state.state === dfu.dfuERROR) await activeDevice.clearStatus();
     await activeDevice.abortToIdle();
     await activeDevice.do_download(transferSize, binaries[key], false);
+    if (key !== 'boot') uploadedMode = key;
     byId('progress').value = 100;
     status(key === 'boot' ? 'Bootloader transferred. Press RESET, reconnect the Daisy and install the firmware.' : 'Transfer complete. If the device does not restart, press RESET. Check that it works before use.');
   } catch (error) { status(`Installation not confirmed: ${error.message || error}. Click Install and hold the encoder for 5 seconds again.`); }
