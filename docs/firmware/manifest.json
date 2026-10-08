@@ -17,5 +17,11 @@
     "size": 123404,
     "sha256": "0cf90ef723d816fbd4a2cf796f4905c6f3b511e2e9a912402a5395617aca2f9d",
     "version": "6.2 extdfu 2000ms"
+  },
+  "unstable": {
+    "file": "firmware/UNSTABLE-MODE.bin",
+    "size": 147328,
+    "sha256": "60e5c2315ceb27085415437802c09f1250c4db598a75687367292b3e38f2b85a",
+    "commit": "14bb4e0302be62878ea8e27a964e15ea16194288"
   }
 }

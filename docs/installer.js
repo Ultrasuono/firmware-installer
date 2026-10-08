@@ -5,14 +5,14 @@ let authorizedUsb, waitKey, waitTimer, checking = false, waitGeneration = 0;
 let uploadedMode;
 const binaries = {};
 const requestedMode = new URLSearchParams(location.search).get('mode');
-document.querySelector(`input[value="${requestedMode === 'dev' ? 'dev' : 'live'}"]`).checked = true;
+document.querySelector(`input[value="${['live', 'dev', 'unstable'].includes(requestedMode) ? requestedMode : 'live'}"]`).checked = true;
 const selected = () => document.querySelector('input[name="variant"]:checked').value;
 const status = message => { byId('status').textContent = message; };
 function updateButtons() {
   const key = selected();
   byId('back').setAttribute('aria-disabled', String(busy || !!waitKey));
   const action = byId('primary');
-  action.textContent = uploadedMode === key ? 'Mode uploaded successfully' : busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
+  action.textContent = uploadedMode === key ? 'Mode uploaded successfully' : busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : `Install ${key.toUpperCase()} mode`;
   action.disabled = uploadedMode === key || busy || !navigator.usb || !catalog || !binaries[key];
   action.classList.add('ready');
   action.classList.toggle('uploaded', uploadedMode === key);
@@ -173,7 +173,7 @@ if (navigator.usb) navigator.usb.addEventListener('connect', async event => {
     const response = await fetch('firmware/manifest.json', {cache:'no-cache'});
     if (!response.ok) throw new Error('Firmware list unavailable.');
     catalog = await response.json();
-    byId('versions').textContent = `LIVE MODE: ${catalog.live.commit.slice(0,7)} · DEV MODE: ${catalog.dev.commit.slice(0,7)} · Built on ${catalog.date}.`;
+    byId('versions').textContent = `LIVE MODE: ${catalog.live.commit.slice(0,7)} · DEV MODE: ${catalog.dev.commit.slice(0,7)} · UNSTABLE MODE: ${catalog.unstable.commit.slice(0,7)} · Built on ${catalog.date}.`;
     await Promise.all([selectVariant(), loadBinary('boot')]);
     if (navigator.usb) await reuseAuthorization();
     if (!navigator.usb) status('To install via USB, open this site in Chrome or Edge on a computer. You can still download the firmware.');

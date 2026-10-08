@@ -1,6 +1,6 @@
 'use strict';
 const FlashCore = {
-  targets: {live: 0x90040000, dev: 0x90040000, boot: 0x08000000},
+  targets: {live: 0x90040000, dev: 0x90040000, unstable: 0x90040000, boot: 0x08000000},
   // ponytail: require one contiguous writable/erasable region; extend only for a bootloader with split regions.
   region(memory, address, size) {
     return memory?.segments?.find(s => s.writable && s.erasable && address >= s.start && address + size <= s.end);
