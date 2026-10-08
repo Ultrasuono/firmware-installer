@@ -1,0 +1,21 @@
+{
+  "date": "08/10/2026",
+  "live": {
+    "file": "firmware/LIVE-MODE.bin",
+    "size": 173836,
+    "sha256": "79e6daa3a86edc2cb1c0bfae71c6e708e5d512976e7bbf6b34f72f56e20636a2",
+    "commit": "dde48ba6e37bdc9aa593e1661453bf297ba04a41"
+  },
+  "dev": {
+    "file": "firmware/DEV-MODE.bin",
+    "size": 178372,
+    "sha256": "9c862eed7a649339c623b4e114b3e2ba922a509ffc54e127a83a80662391b2a5",
+    "commit": "a20942bf02003f9f85b34a61b3e28c29f6d9cb2d"
+  },
+  "boot": {
+    "file": "firmware/DAISY-BOOTLOADER.bin",
+    "size": 123404,
+    "sha256": "0cf90ef723d816fbd4a2cf796f4905c6f3b511e2e9a912402a5395617aca2f9d",
+    "version": "6.2 extdfu 2000ms"
+  }
+}

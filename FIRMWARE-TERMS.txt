@@ -1,0 +1,27 @@
+ULTRASUONO — Firmware di prova LIVE MODE / DEV MODE
+
+I sorgenti applicativi Ultrasuono non vengono pubblicati con questa distribuzione.
+È consentito scaricare e installare questi firmware sul proprio dispositivo
+Ultrasuono, modificarli per uso personale e svolgere reverse engineering per
+il debugging di tali modifiche, incluse le modifiche alle librerie LGPL.
+Questa distribuzione non concede una licenza open source sui sorgenti
+applicativi Ultrasuono né ulteriori diritti di redistribuzione della parte
+applicativa, salvo quelli previsti dalla legge applicabile.
+
+I componenti di terze parti mantengono integralmente le rispettive licenze.
+Queste condizioni non limitano i diritti conferiti da tali licenze.
+DaisySP-LGPL, copyright (c) 2023 Electrosmith, Corp., è usata nel firmware
+ed è distribuita sotto GNU LGPL 2.1. La licenza completa, i sorgenti della
+libreria effettivamente usati e gli oggetti applicativi necessari a ricomporre
+il firmware sono inclusi nei pacchetti LIVE-MODE-relink.zip e
+DEV-MODE-relink.zip, scaricabili insieme ai firmware.
+
+I pacchetti includono anche le altre librerie Daisy e i relativi avvisi.
+Il runtime della toolchain ARM usa Newlib e componenti GCC: gli avvisi sono
+in NEWLIB-LICENSE.txt, GCC-GPL-3.txt e GCC-RUNTIME-EXCEPTION.txt.
+Il bootloader Daisy è incluso nella copia di libDaisy con la sua licenza.
+
+Si tratta di versioni compilate ma ancora da collaudare su hardware.
+Non viene fornita una garanzia di funzionamento o idoneità a uno specifico
+uso, nei limiti consentiti dalla legge. Il flashing sostituisce il firmware
+presente; verificare cablaggio, compatibilità e funzionamento prima dell’uso.
