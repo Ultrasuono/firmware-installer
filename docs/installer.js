@@ -10,9 +10,10 @@ const status = message => { byId('status').textContent = message; };
 function updateButtons() {
   const key = selected();
   byId('back').setAttribute('aria-disabled', String(busy || !!waitKey));
-  byId('connect').disabled = busy || !!waitKey || !navigator.usb || !catalog;
-  byId('install').textContent = waitKey ? 'Cancel waiting' : `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}`;
-  byId('install').disabled = busy || !navigator.usb || !binaries[key] || !authorizedUsb;
+  const action = byId('primary');
+  action.textContent = busy ? (authorizedUsb ? 'Installing…' : 'Authorizing…') : waitKey ? 'Cancel waiting' : authorizedUsb ? `Install ${key === 'live' ? 'LIVE mode' : 'DEV mode'}` : 'Authorize Daisyseed';
+  action.disabled = busy || !navigator.usb || !catalog || (!!authorizedUsb && !binaries[key]);
+  action.classList.toggle('ready', !!authorizedUsb);
   byId('boot').disabled = busy || !!waitKey || !authorizedUsb || !binaries.boot || !byId('boot-confirm').checked;
   document.querySelectorAll('input[name="variant"]').forEach(input => { input.disabled = busy || !!waitKey; });
   byId('boot-confirm').disabled = busy || !!waitKey;
@@ -156,8 +157,7 @@ async function install(key) {
   }
 }
 byId('back').addEventListener('click', event => { if (busy || waitKey) event.preventDefault(); });
-byId('connect').addEventListener('click', connect);
-byId('install').addEventListener('click', () => waitAndInstall(selected()));
+byId('primary').addEventListener('click', () => authorizedUsb ? waitAndInstall(selected()) : connect());
 byId('boot').addEventListener('click', () => waitAndInstall('boot'));
 byId('boot-confirm').addEventListener('change', updateButtons);
 document.querySelectorAll('input[name="variant"]').forEach(input => input.addEventListener('change', selectVariant));
