@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ultrasuono · Firmware</title>
+  <meta name="description" content="Explore and install the latest LIVE MODE and DEV MODE firmware for Ultrasuono with Daisy Seed.">
+  <link rel="icon" href="assets/favicon-ultrasuono.png" type="image/png"><link rel="stylesheet" href="style.css?v=figma-1">
+  <script src="vendor/dfu.js" defer></script><script src="vendor/dfuse.js" defer></script>
+  <script src="flash-core.js" defer></script><script src="installer.js?v=figma-1" defer></script>
+</head>
+<body class="install-page">
+<header><a class="brand" href="index.html" aria-label="Ultrasuono firmware home"><img src="assets/ultra-mark.svg" alt="Ultra"></a><a class="button website" href="https://www.ultrasuono.org/">website <img src="assets/arrow.svg" alt=""></a></header>
+<main>
+  <a id="back" class="button back" href="index.html"><img src="assets/arrow-install.svg" alt="">back</a>
+  <h1>Install the firmware</h1>
+  <div hidden><input type="radio" name="variant" value="live" checked><input type="radio" name="variant" value="dev"></div>
+  <ol class="steps">
+    <li class="step"><span class="step-number" aria-hidden="true">01</span><p>Use Chrome or Edge on a computer and a USB data cable. Turn down the audio volume.</p></li>
+    <li class="step"><span class="step-number" aria-hidden="true">02</span><p>Click “Authorize Daisyseed”. With the USB dialog open, hold down the encoder for 5 seconds and select the DFU device when it appears.</p></li>
+    <li class="step"><span class="step-number" aria-hidden="true">03</span><p>Click “Install mode”, then hold the encoder for 5 seconds if needed. The site waits and starts the transfer as soon as it detects the Daisy.</p></li>
+  </ol>
+  <div class="actions"><button id="connect" type="button" disabled>Authorize Daisyseed</button><button id="install" type="button" disabled>Install LIVE mode</button></div>
+  <div class="transfer"><progress id="progress" max="100" value="0" aria-label="Installation progress"></progress><p id="status" role="status" aria-live="polite">Loading firmware…</p><a id="download" href="firmware/LIVE-MODE.bin" download>Download firmware .bin</a></div>
+  <section class="faq" aria-label="Frequently asked questions">
+    <details id="boot-help"><summary>First installation or bootloader not found?</summary><p>If the site detects only internal memory, install the Daisy bootloader before the firmware. This initial procedure requires access to the buttons on the board.</p><ol><li>On the Daisy Seed, hold BOOT, press and release RESET, then release BOOT.</li><li>Click “Authorize Daisyseed” and select the DFU device.</li><li>Check the confirmation below and click “Install Daisy bootloader”. This replaces the contents of internal flash.</li><li>After the transfer, click “Install” for your selected firmware, then press RESET on the board. The site waits and starts the transfer automatically.</li></ol><label class="confirm"><input id="boot-confirm" type="checkbox"> I confirm that this is the Daisy Seed in Ultrasuono and I want to install the bootloader.</label><button id="boot" type="button" disabled>Install Daisy bootloader</button></details>
+    <details><summary>How do I enter or leave update mode?</summary><p>After installing one of these firmware versions, hold the encoder for 5 seconds to enter the bootloader with no timeout. You can authorize the device and install firmware without rushing.</p><p>To leave without installing, turn Ultrasuono off and on, or press RESET on the Daisy. “Cancel waiting” stops only the website; it does not restart the device.</p><p>The first installation of this update still uses the previous firmware’s short update window. You do not need to replace the standard Daisy bootloader.</p></details>
+    <details><summary>Why can’t the computer find the Daisy?</summary><p>Leave the site waiting and hold the encoder for 5 seconds again. You can stop waiting with “Cancel waiting”. Check your USB data cable. On Windows, the DFU device may need the WinUSB driver: follow the instructions in the <a href="https://flash.daisy.audio/" target="_blank" rel="noopener">official Daisy programmer</a>. Safari and Firefox do not support this USB installer.</p><p>Do not disconnect the device during transfer. If writing fails, the site stops. Click “Install” again and repeat the encoder press.</p></details>
+    <details><summary>Firmware versions, licenses and relinking packages</summary><p id="versions">Loading versions…</p><p>Ultrasuono application sources remain private. The firmware includes third-party libraries, including DaisySP-LGPL. The packages below contain library sources, application objects and instructions for relinking the firmware.</p><p><a href="firmware/LIVE-MODE-relink.zip" download>LIVE MODE package</a> · <a href="firmware/DEV-MODE-relink.zip" download>DEV MODE package</a> · <a href="FIRMWARE-TERMS.txt">Firmware terms</a> · <a href="vendor/LICENSE.txt">USB programmer license</a></p></details>
+  </section>
+</main>
+<footer><a href="https://www.ultrasuono.org/" aria-label="Ultrasuono website"><img src="assets/ultrasuono-mark.svg" alt="Ultrasuono"></a><p class="copyright">Website © 2026 by Angiola Angelo Valerio, Bottari Federico, Buselli Nicolò, Poles Tito · <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><span class="terms">Firmware: <a href="FIRMWARE-TERMS.txt">Ultrasuono proprietary terms and third-party licenses</a>.</span></p></footer>
+</body></html>

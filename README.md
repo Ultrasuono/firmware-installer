@@ -5,6 +5,8 @@ Questi firmware usano `System::ResetToBootloader(System::DAISY_INFINITE_TIMEOUT)
 
 ## Contenuto
 
+- `index.html`: scelta LIVE MODE o DEV MODE secondo il layout Figma.
+- `install.html?mode=live` e `install.html?mode=dev`: installazione della variante selezionata, con istruzioni e FAQ in inglese.
 - `firmware/LIVE-MODE.bin` e `firmware/DEV-MODE.bin`: applicazioni QSPI, indirizzo `0x90040000`.
 - `firmware/DAISY-BOOTLOADER.bin`: Daisy bootloader 6.2 extdfu, finestra DFU di 2000 ms, flash interna `0x08000000`.
 - `firmware/manifest.json`: commit sorgenti, dimensioni e SHA-256 dei binari.
