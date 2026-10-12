@@ -10,7 +10,7 @@
     "file": "firmware/DEV-MODE.bin",
     "size": 183120,
     "sha256": "a258a83a3f42acf5440d4b7a102db1056e41635bf7d146dffb53a6d450e6d2cb",
-    "commit": "caef2a4f4f38cb9b6f8c7e08adc426b52e17d04e"
+    "commit": "8e510883bdddc81b00d3237bfd45867b584d95f8"
   },
   "boot": {
     "file": "firmware/DAISY-BOOTLOADER.bin",
