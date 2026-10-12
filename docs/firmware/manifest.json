@@ -4,7 +4,7 @@
     "file": "firmware/LIVE-MODE.bin",
     "size": 179744,
     "sha256": "38bdbaa3c53938c4a2d545f7306605fceb5cec200b8ae0eaceec366393412989",
-    "commit": "24c9207821c21110a853be0fdfd0932383ebf0c1"
+    "commit": "23462f158763b0a55a92f195db4954d635a7b171"
   },
   "dev": {
     "file": "firmware/DEV-MODE.bin",
