@@ -1,5 +1,5 @@
 {
-  "date": "08/10/2026",
+  "date": "12/10/2026",
   "live": {
     "file": "firmware/LIVE-MODE.bin",
     "size": 179744,
@@ -22,6 +22,6 @@
     "file": "firmware/UNSTABLE-MODE.bin",
     "size": 147328,
     "sha256": "60e5c2315ceb27085415437802c09f1250c4db598a75687367292b3e38f2b85a",
-    "commit": "14bb4e0302be62878ea8e27a964e15ea16194288"
+    "commit": "14ea8e52301b161505993545f0fb6bcf075651e1"
   }
 }
