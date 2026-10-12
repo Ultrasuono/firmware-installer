@@ -2,9 +2,9 @@
   "date": "12/10/2026",
   "dev": {
     "file": "firmware/DEV-MODE.bin",
-    "size": 183120,
-    "sha256": "7fd0c422b9ed9ee1d9022594e3054546e0669b08953151ba79d3bcb18b4c7c10",
-    "commit": "85894ba9d8baf215d712a4b10d1c890b0ae4a7ff"
+    "size": 183152,
+    "sha256": "4d1a9ec553214102491a62e001a3c398a10d30664ca67cd9152affe32062661d",
+    "commit": "e245ef2ae861a72647990f3d55ba3a1b96705c9a"
   },
   "boot": {
     "file": "firmware/DAISY-BOOTLOADER.bin",
