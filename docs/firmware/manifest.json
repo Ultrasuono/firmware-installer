@@ -20,8 +20,8 @@
   },
   "live": {
     "file": "firmware/LIVE-MODE.bin",
-    "size": 147328,
-    "sha256": "987e729735036b4a6054fede76488904d743c58b4e2e2e097fa2a2e2791f81ec",
-    "commit": "2727e3c480b5f9c30b478dc5e4bc3d55e2ca52af"
+    "size": 147856,
+    "sha256": "5615cf6517810b2954191a4c241f6a9681e6916e92e2949a92c8325a94a88a7f",
+    "commit": "b7edd542a52906be64962b31419977753857784b"
   }
 }
