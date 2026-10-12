@@ -1,16 +1,10 @@
 {
   "date": "12/10/2026",
-  "live": {
-    "file": "firmware/LIVE-MODE.bin",
-    "size": 179744,
-    "sha256": "38bdbaa3c53938c4a2d545f7306605fceb5cec200b8ae0eaceec366393412989",
-    "commit": "23462f158763b0a55a92f195db4954d635a7b171"
-  },
   "dev": {
     "file": "firmware/DEV-MODE.bin",
     "size": 183120,
-    "sha256": "a258a83a3f42acf5440d4b7a102db1056e41635bf7d146dffb53a6d450e6d2cb",
-    "commit": "8e510883bdddc81b00d3237bfd45867b584d95f8"
+    "sha256": "7fd0c422b9ed9ee1d9022594e3054546e0669b08953151ba79d3bcb18b4c7c10",
+    "commit": "85894ba9d8baf215d712a4b10d1c890b0ae4a7ff"
   },
   "boot": {
     "file": "firmware/DAISY-BOOTLOADER.bin",
@@ -18,10 +12,16 @@
     "sha256": "0cf90ef723d816fbd4a2cf796f4905c6f3b511e2e9a912402a5395617aca2f9d",
     "version": "6.2 extdfu 2000ms"
   },
-  "unstable": {
-    "file": "firmware/UNSTABLE-MODE.bin",
+  "basic": {
+    "file": "firmware/BASIC-MODE.bin",
+    "size": 179744,
+    "sha256": "38bdbaa3c53938c4a2d545f7306605fceb5cec200b8ae0eaceec366393412989",
+    "commit": "330f43d3ab0d1f41540cd6282fc46ae62f425c5d"
+  },
+  "live": {
+    "file": "firmware/LIVE-MODE.bin",
     "size": 147328,
-    "sha256": "60e5c2315ceb27085415437802c09f1250c4db598a75687367292b3e38f2b85a",
-    "commit": "14ea8e52301b161505993545f0fb6bcf075651e1"
+    "sha256": "987e729735036b4a6054fede76488904d743c58b4e2e2e097fa2a2e2791f81ec",
+    "commit": "2727e3c480b5f9c30b478dc5e4bc3d55e2ca52af"
   }
 }

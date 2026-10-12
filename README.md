@@ -2,7 +2,7 @@
 
 # Ultrasuono Firmware Installer
 
-Choose LIVE MODE, DEV MODE or UNSTABLE MODE and install it on your Ultrasuono directly from your browser.
+Choose BASIC MODE, DEV MODE or LIVE MODE and install it on your Ultrasuono directly from your browser.
 
 ## Install
 
