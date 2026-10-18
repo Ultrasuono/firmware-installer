@@ -1,5 +1,5 @@
 {
-  "date": "12/10/2026",
+  "date": "18/10/2026",
   "dev": {
     "file": "firmware/DEV-MODE.bin",
     "size": 183152,
@@ -23,5 +23,11 @@
     "size": 147856,
     "sha256": "5615cf6517810b2954191a4c241f6a9681e6916e92e2949a92c8325a94a88a7f",
     "commit": "b7edd542a52906be64962b31419977753857784b"
+  },
+  "midi": {
+    "file": "firmware/MIDI-MODE.bin",
+    "size": 168972,
+    "sha256": "c21233a3281e4f2a08aed4819e1b4781addb7d4ab0e44574a98951bb28773e7e",
+    "commit": "4a1251dc5aee375d3d50702a5a34e0bf31422fc5"
   }
 }
