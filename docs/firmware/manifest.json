@@ -26,8 +26,8 @@
   },
   "midi": {
     "file": "firmware/MIDI-MODE.bin",
-    "size": 169708,
-    "sha256": "f257f0d708c6bb254709ab7e8c95107280b41253c497c22d6c11ab26efeec746",
-    "commit": "b1fc26e9a8bbcaea4a278397b232c43a28668a9a"
+    "size": 170692,
+    "sha256": "82bb8b1152d91ae9ab466920450b7714d466a46fa2bbfdeed4eb1c8b65781592",
+    "commit": "f321a2e91cfd12b00d60442fe6f03ae3c120e04d"
   }
 }
